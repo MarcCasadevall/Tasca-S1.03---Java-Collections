@@ -18,8 +18,10 @@ public class CapitalGame {
             reader = new BufferedReader(fileReader);
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] countryCapital = line.split("\\s+");
-                countries.put(countryCapital[0], countryCapital[1]);
+                String[] countryCapital = line.split("\\s+",2);
+                if (!line.trim().isEmpty()) {
+                    countries.put(countryCapital[0].trim(), countryCapital[1].trim());
+                }
             }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
