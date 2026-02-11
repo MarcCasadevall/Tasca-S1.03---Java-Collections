@@ -9,7 +9,7 @@ public class CapitalGame {
     public static HashMap<String, String> createMap() {
         HashMap<String, String> countries = new HashMap<>();
 
-        String route = "C:/Users/Marc/Desktop/Archivos It/countries.txt";
+        String route = "src/main/resources/countries.txt";
         BufferedReader reader = null;
 
         try {
@@ -40,7 +40,7 @@ public class CapitalGame {
     public static int game(HashMap<String,String> countries, String user) {
 
         ArrayList<String> gameCountries = new ArrayList<>(countries.keySet());
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Okey " + user + "\nYou have to name the capitals of the 10 countries I'm about to list, let's start...");
         int score = 0;
@@ -49,7 +49,7 @@ public class CapitalGame {
 
             String country = gameCountries.get((int) (Math.random() * (gameCountries.size())));
             System.out.println(country);
-            String answer = sc.nextLine().trim();
+            String answer = scanner.nextLine().trim();
             String capital = countries.get(country);
 
             if (answer.equalsIgnoreCase(capital)) {
@@ -66,19 +66,19 @@ public class CapitalGame {
     }
 
     public static void saveScore(String user, int score) {
-        BufferedWriter bw = null;
+        BufferedWriter bufferedWriter = null;
 
         try {
-            FileWriter fw = new FileWriter("C:\\Users\\Marc\\Desktop\\Archivos It\\users.txt", true);
-            bw = new BufferedWriter(fw);
-            bw.write(user + " " + score);
-            bw.newLine();
+            FileWriter fileWriter = new FileWriter("C:\\Users\\Marc\\Desktop\\Archivos It\\users.txt", true);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(user + " " + score);
+            bufferedWriter.newLine();
         } catch (IOException e) {
             System.out.println("Error,user.txt not found " +e.getMessage());
         } finally {
-            if (bw != null) {
+            if (bufferedWriter != null) {
                 try{
-                    bw.close();
+                    bufferedWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error closing BufferedWriter " + e.getMessage());
                 }

@@ -11,11 +11,7 @@ public class Month {
             return name;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        @Override
+    @Override
         public boolean equals(Object obj) {
             Month month = (Month) obj;
             if (this == obj) return true;
